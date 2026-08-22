@@ -22,6 +22,21 @@
 
 ---
 
+### Solusi Masalah GPS & Sinyal di Transportasi Umum
+
+Seringkali aplikasi navigasi biasa gagal saat digunakan di transportasi umum Jabodetabek karena masalah hilangnya sinyal GPS di bawah tanah atau alarm yang berbunyi sebelum waktunya. Communify dirancang dengan **3 teknologi khusus** untuk mengatasi kendala tersebut:
+
+* 🚇 **Dead Reckoning Engine (Anti Buta di Terowongan MRT & Blind Spot)**  
+  Saat armada masuk ke terowongan bawah tanah (seperti MRT Senayan–Bundaran HI) di mana sinyal satelit GPS terputus total, *Watchdog Timer* Communify otomatis mengaktifkan mode navigasi inersial. Aplikasi menginterpolasi pergerakan armada secara cerdas berdasarkan kecepatan terakhir dan estimasi waktu tempuh antar stasiun. Hasilnya: **pengumuman suara TTS dan getaran notifikasi tetap berbunyi tepat waktu sebelum tiba di stasiun tujuan!**
+
+* 🛡️ **Departure Radius Gate 150m (Bebas Alarm Palsu di Peron)**  
+  Di stasiun yang padat, akurasi sinyal GPS sering "melompat-lompat" (*jitter*) saat kereta atau bus Transjakarta masih berhenti di peron awal. Communify mengunci sistem pelacakan dengan gerbang virtual 150 meter. Alarm stasiun berikutnya hanya akan aktif setelah armada benar-benar meluncur keluar dari stasiun keberangkatan.
+
+* 🔋 **100% Offline Database & Android Foreground Service**  
+  Tidak ada sinyal operator di lintasan rel atau kuota internet habis? Bukan masalah. Seluruh koordinat stasiun dan halte tersimpan secara lokal di perangkat (*offline-first*). Dipadukan dengan *Android Foreground Service*, pelacakan GPS dijamin tidak akan dimatikan paksa oleh sistem penghemat baterai Android saat HP dimasukkan ke kantong celana.
+
+---
+
 ### Antarmuka Aplikasi
 
 | KRL Commuter Line | Transjakarta BRT | MRT Jakarta | LRT Network |
