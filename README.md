@@ -1,133 +1,95 @@
-# Communify Transit Assistant 🚆 🚌 🚇 🚊
-> **Asisten Komuter Cerdas & Pengingat Stasiun/Halte Seluruh Moda Transportasi Jabodetabek**
+# Communify
+**Smart Transit Companion & Location-Based Audio Alert for Jabodetabek**
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Platform Android" />
-  <img src="https://img.shields.io/badge/Version-v1.0.0-blue?style=for-the-badge" alt="Version" />
-  <img src="https://img.shields.io/badge/Moda-KRL_%7C_TJ_14_Koridor_%7C_MRT_%7C_LRT-6366F1?style=for-the-badge" alt="Transport Networks" />
-  <img src="https://img.shields.io/badge/Status-Public_Beta-2ea44f?style=for-the-badge" alt="Status" />
-  <img src="https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge" alt="License" />
+<p align="left">
+  <img src="https://img.shields.io/badge/Platform-Android-000000?style=flat-square&logo=android&logoColor=white" alt="Platform" />
+  <img src="https://img.shields.io/badge/Version-v1.0.0-24292e?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/Status-Public%20Beta-0969da?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Coverage-Jabodetabek-1f2328?style=flat-square" alt="Coverage" />
 </p>
 
-<p align="center">
-  <a href="https://github.com/zyfdwm/communify-app/releases/latest">
-    <img src="https://img.shields.io/badge/📥_DOWNLOAD_APK-Versi_Terbaru_(v1.0.0)-2ea44f?style=for-the-badge&logo=android&logoColor=white" height="42" alt="Download APK" />
-  </a>
-</p>
+[**Download APK (Latest Release)**](https://github.com/zyfdwm/communify-app/releases/latest) • [**Report an Issue**](https://github.com/zyfdwm/communify-app/issues) • [**Changelog**](#changelog)
 
 ---
 
-## 📖 Apa itu Communify?
+### Overview
 
-**Communify** adalah aplikasi asisten perjalanan *all-in-one* yang dirancang khusus untuk para pejuang komuter di wilayah metropolitan **Jabodetabek**. Pernahkah Anda ketiduran di KRL, asyik mendengarkan musik di bus Transjakarta hingga terlewat halte transit penting, atau kebingungan saat berpindah antarmoda di Kawasan Dukuh Atas dan Stasiun Manggarai?
-
-Communify hadir sebagai solusi navigasi cerdas yang bekerja secara *hands-free* di saku Anda:
-- 🎧 **Tetap Asyik Mendengarkan Musik/Podcast**: Suara asisten otomatis (*Text-to-Speech*) berbahasa Indonesia akan masuk ke earphone/TWS memberi tahu stasiun berikutnya, persiapan transit, hingga saat tiba di tujuan.
-- 📍 **Pelacakan Latar Belakang (*Foreground Service*)**: Aplikasi tetap aktif mengawal perjalanan Anda saat layar HP mati atau terkunci di dalam saku celana/tas.
-- 🔄 **Integrasi 4 Moda Transportasi Utama**: Menghubungkan seluruh jaringan rel dan bus BRT Jabodetabek dalam satu genggaman.
+**Communify** is a lightweight, background-first transit assistant tailored for daily commuters across the Greater Jakarta (Jabodetabek) metropolitan area. Designed for hands-free navigation, Communify runs unobtrusively in the background to provide timely Indonesian voice prompts (Text-to-Speech) directly to your earphones or TWS, ensuring you never miss a transit interchange or your destination station.
 
 ---
 
-## 🚊 Cakupan Moda Transportasi Lengkap
+### Key Capabilities
 
-Communify telah terintegrasi dengan database rute dan titik koordinat GPS presisi untuk 4 jaringan transportasi utama:
+- **Automated Earphone Voice Alerts (TTS)**: Context-aware announcements for upcoming stations, transfer prep warnings, and arrival notifications without requiring you to check your screen.
+- **Dual-Gate Geofencing (150m / 500m)**: Smart departure radius gating to eliminate false alarms while dwelling at departure platforms, paired with proactive 500m arrival zones.
+- **Multi-Modal Routing Engine**: Shortest-path routing (Dijkstra) supporting multi-hop journeys with up-to-date platform switch instructions (Manggarai SO-7 layout, Tanah Abang new concourse).
+- **Dead Reckoning Estimation**: Inertial estimation support during underground tunnels and dense signal-blocked segments.
+- **Persistent Background Operation**: Runs as a prioritized Android Foreground Service with state persistence across app lifecycle events.
+- **Offline Network Database**: Full local station and stop coordinate database—no active mobile data required for core geofence monitoring.
+- **Route Simulator**: Built-in 1x–5x simulation engine with station jump controls for previewing routes before boarding.
+- **Commute Carbon Analytics**: Automated travel logs with estimated CO₂ emission savings.
+
+---
+
+### Supported Transit Networks
+
+Communify provides complete routing and coordinate mapping for 4 major regional systems:
 
 ```
-                  ┌─────────────────────────────────────────────────────────┐
-                  │            COMMUNIFY TRANSIT ASSISTANT                  │
-                  └──────┬─────────────┬─────────────┬─────────────┬────────┘
-                         │             │             │             │
-              ┌──────────┴──┐   ┌──────┴──────┐ ┌────┴──────┐ ┌────┴────────┐
-              │ 🚆 KRL LINE │   │ 🚌 TJ BRT   │ │ 🚇 MRT JKT│ │ 🚊 LRT NET  │
-              └─────────────┘   └─────────────┘ └───────────┘ └─────────────┘
-               • Bogor Line      • 14 Koridor    • Lin Utara-  • LRT Jabodebek
-               • Cikarang Loop     Utama BRT       Selatan       (Cibubur &
-               • Rangkasbitung   • Rute Non-BRT    (Lebak Bulus   Bekasi Line)
-               • Tangerang Line  • Koridor 13      s/d Bundaran• LRT Jakarta
-               • Tanjung Priok     (Layang)        HI)           (Velodrome)
-               • Bandara Soetta
+[ Communify Transit Engine ]
+├── KRL Commuter Line
+│   ├── Bogor Line (Jakarta Kota - Bogor / Nambo)
+│   ├── Cikarang Loop Line (Cikarang - Manggarai - Kampung Bandan)
+│   ├── Rangkasbitung Line (Tanah Abang - Rangkasbitung)
+│   ├── Tangerang & Tanjung Priok Lines
+│   └── Soekarno-Hatta Airport Rail Link
+├── Transjakarta BRT
+│   ├── Corridors 1 - 14 (Full BRT Trunk Network)
+│   └── Elevated Corridor 13 (Ciledug - Tendean)
+├── MRT Jakarta
+│   └── North-South Line (Lebak Bulus Grab - Bundaran HI Bank DKI)
+└── LRT Network
+    ├── LRT Jabodebek (Cibubur Line & Bekasi Line)
+    └── LRT Jakarta (Pegangsaan Dua - Velodrome)
 ```
 
-### 1. 🚆 KRL Commuter Line
-- **Lintas Bogor** (Jakarta Kota – Bogor / Nambo)
-- **Lintas Cikarang Loop** (Cikarang / Bekasi – Jatinegara – Pasar Senen – Kampung Bandan – Manggarai)
-- **Lintas Rangkasbitung** (Tanah Abang – Serpong – Parung Panjang – Rangkasbitung)
-- **Lintas Tangerang & Tanjung Priok** (Duri – Tangerang & Jakarta Kota – Tanjung Priok)
-- **Kereta Bandara Soekarno-Hatta (Basoetta)**
+---
 
-### 2. 🚌 Transjakarta BRT (14 Koridor Utama Penuh)
-- **Koridor 1 s/d 14 Lengkap**: Mulai dari Koridor 1 (Blok M – Kota), Koridor 9 (Pinang Ranti – Pluit), Koridor 13 Jalur Layang Khusus (Ciledug – Tendean), hingga Koridor 14 (JIS – Senen Raya).
-- Mendukung integrasi halte transfer sibuk (Harmoni Baru, Monas, Tosari, Semanggi, dll).
+### Installation Guide (Android Sideload)
 
-### 3. 🚇 MRT Jakarta
-- **Lin Utara – Selatan**: Menghubungkan 13 stasiun bawah tanah dan layang dari Lebak Bulus Grab hingga Bundaran HI Bank DKI.
+Because Communify is currently distributed directly via GitHub Releases:
 
-### 4. 🚊 LRT Network (Jabodebek & Jakarta)
-- **LRT Jabodebek**: Lin Cibubur (Dukuh Atas – Harjamukti) & Lin Bekasi (Dukuh Atas – Jatimulya).
-- **LRT Jakarta**: Lin Pegangsaan Dua – Velodrome Rawamangun.
+1. **Download APK**: Download the latest release `.apk` file from the [Releases tab](https://github.com/zyfdwm/communify-app/releases/latest).
+2. **Enable Unknown Sources**:
+   - Open the downloaded file.
+   - When prompted by Android security, navigate to **Settings** and toggle **"Allow from this source"** for your browser or file manager.
+3. **Install & Launch**: Tap **Install**, then open Communify.
+4. **Grant Permissions**:
+   - **Location Permission**: Select **"Allow all the time"** (Background Location) so route tracking and earphone announcements remain active while your phone is locked or stored in your pocket.
+   - **Notifications**: Allow notification access to enable heads-up status alerts.
 
 ---
 
-## ✨ Fitur-Fitur Utama
+### Changelog
 
-| Fitur | Deskripsi |
-| :--- | :--- |
-| 🎧 **Voice Announcement (TTS Earphone)** | Notifikasi suara berbahasa Indonesia yang otomatis mengingatkan: *"Stasiun berikutnya...", "Bersiap turun/transit di...",* dan *"Anda telah tiba di stasiun tujuan"*. |
-| 🔔 **Heads-Up Banner & Haptic Vibration** | Pop-up notifikasi berprioritas tinggi dan getaran haptik khusus saat kereta/bus memasuki radius 500m dari stasiun tujuan. |
-| 🛡️ **Departure Radius Gate (150m)** | Algoritma cerdas yang mencegah alarm berbunyi berulang kali saat armada masih berhenti di peron stasiun keberangkatan. |
-| 🗺️ **Routing & Transit Interchange Guide** | Pencarian rute tercepat (*Dijkstra Multi-Hop*) lengkap dengan panduan peron & pintu transit (Pola SO-7 Manggarai & JPO Integrasi Hub Dukuh Atas/CSW). |
-| 🚇 **Dead Reckoning Estimation** | Estimasi pergerakan inersial cerdas saat armada melewati terowongan bawah tanah atau titik blank-spot GPS. |
-| 🔋 **Hemat Kuota & Baterai** | Database halte/stasiun tersimpan secara *offline* di perangkat, tidak memerlukan koneksi internet aktif untuk geofencing. |
-| 🌿 **Eco Impact Tracker** | Mencatat riwayat perjalanan Anda dan mengkalkulasi kontribusi penghematan jejak karbon (CO₂ Saved). |
-| 🧪 **Mode Simulasi Virtual** | Ingin melihat simulasi rute sebelum berangkat? Uji rute perjalanan dengan kecepatan simulasi 1x–5x dan fitur *Lompat Stasiun*. |
+#### v1.0.0 (Public Beta)
+- Initial public beta release.
+- Complete network coverage for KRL Commuter Line, Transjakarta Corridors 1–14, MRT Jakarta, and LRT Jabodebek/Jakarta.
+- Indonesian TTS audio engine for background earphone guidance.
+- Dijkstra transit routing with platform and interchange guidance.
+- Dead reckoning tracking for tunnel segments.
+- Built-in route simulation mode and commute carbon footprint tracker.
 
 ---
 
-## 📲 Panduan Instalasi APK di Android (Sideload)
+### Feedback & Contributing
 
-Aplikasi Communify didistribusikan secara independen melalui GitHub Releases. Ikuti 4 langkah mudah berikut untuk menginstalnya:
-
-```
-  1. Unduh APK       2. Izinkan Sumber       3. Pasang APK        4. Izin Lokasi
- ┌──────────────┐    ┌──────────────┐       ┌──────────────┐     ┌──────────────┐
- │  Download    │───>│ "Allow from  │──────>│ Tekan Tombol │────>│ Izinkan GPS  │
- │  file .apk   │    │ this source" │       │  "Install"   │     │ "All the time│
- └──────────────┘    └──────────────┘       └──────────────┘     └──────────────┘
-```
-
-1. **Unduh File APK**:
-   - Klik tombol [**Download APK Versi Terbaru**](https://github.com/zyfdwm/communify-app/releases/latest) atau unduh file `.apk` pada daftar *Assets*.
-2. **Izinkan Instalasi dari Sumber Tidak Dikenal**:
-   - Buka file `.apk` yang baru saja diunduh.
-   - Jika muncul dialog keamanan Android, klik **Settings / Pengaturan** $\rightarrow$ centang **"Allow from this source / Izinkan dari sumber ini"** untuk browser atau file manager Anda.
-3. **Pasang (Install) Aplikasi**:
-   - Klik **Install / Pasang** dan tunggu proses selesai.
-4. **Berikan Izin Lokasi (*Location Permission*)**:
-   - Saat pertama kali membuka aplikasi, pilih **"Allow all the time / Izinkan sepanjang waktu"** untuk akses lokasi agar pengingat suara tetap dapat berbunyi saat layar HP mati atau di saku.
+To report routing discrepancies, missing bus stops, or suggest new features:
+- File a report under [**GitHub Issues**](https://github.com/zyfdwm/communify-app/issues).
+- Check the [**Discussions**](https://github.com/zyfdwm/communify-app/discussions) tab for community feature requests and roadmap updates.
 
 ---
 
-## 📝 Catatan Rilis & Blog Pembaruan (Changelog)
-
-### 🚀 [v1.0.0] - Peluncuran Resmi Public Beta
-*🗓️ Agustus 2026*
-- 🚆 **Integrasi Multi-Moda Penuh**: Dukungan komprehensif untuk KRL Commuter Line, 14 Koridor Transjakarta BRT, MRT Jakarta, dan LRT Jabodebek/Jakarta.
-- 🎧 **Sistem Audio TTS Bahasa Indonesia**: Pengumuman otomatis ke TWS/Headset untuk stasiun berikutnya dan peringatan transit.
-- 🗺️ **Transit Navigation Engine**: Panduan peron terintegrasi (Manggarai SO-7, Hub Dukuh Atas, Stasiun Baru Tanah Abang).
-- 📍 **Smart Geofence & Departure Gate (150m)**: Pelacakan latar belakang presisi anti-false alarm.
-- 🧪 **Fitur Simulasi Virtual**: Fitur testing rute virtual dengan kontrol kecepatan.
-- 📊 **Riwayat & Eco-Impact**: Kalender riwayat perjalanan interaktif dan kalkulator reduksi karbon.
-
----
-
-## 💬 Laporan Bug & Saran Fitur (Feedback)
-
-Communify dibuat dari komuter, oleh komuter, untuk komuter! Jika Anda menemukan rute yang perlu disesuaikan, nama halte baru, atau memiliki ide fitur:
-- 🐛 **Lapor Bug / Request Rute**: Buat tiket di [**GitHub Issues**](https://github.com/zyfdwm/communify-app/issues).
-- ⭐ **Dukung Aplikasi**: Berikan bintang (*Star*) pada repository ini agar lebih banyak pejuang komuter Jabodetabek terbantu!
-
----
-
-<p align="center">
-  Dibuat dengan ❤️ untuk Komuter Jabodetabek • <b>Communify Transit Assistant</b>
+<p align="left">
+  <sub>Communify Transit Assistant • Jakarta Metropolitan Area</sub>
 </p>
