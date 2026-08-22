@@ -1,95 +1,95 @@
 # Communify
-**Smart Transit Companion & Location-Based Audio Alert for Jabodetabek**
+**Asisten Transit Cerdas & Pengingat Stasiun/Halte Berbasis Lokasi untuk Jabodetabek**
 
 <p align="left">
   <img src="https://img.shields.io/badge/Platform-Android-000000?style=flat-square&logo=android&logoColor=white" alt="Platform" />
-  <img src="https://img.shields.io/badge/Version-v1.0.0-24292e?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/Versi-v1.0.0-24292e?style=flat-square" alt="Versi" />
   <img src="https://img.shields.io/badge/Status-Public%20Beta-0969da?style=flat-square" alt="Status" />
-  <img src="https://img.shields.io/badge/Coverage-Jabodetabek-1f2328?style=flat-square" alt="Coverage" />
+  <img src="https://img.shields.io/badge/Cakupan-Jabodetabek-1f2328?style=flat-square" alt="Cakupan" />
 </p>
 
-[**Download APK (Latest Release)**](https://github.com/zyfdwm/communify-app/releases/latest) • [**Report an Issue**](https://github.com/zyfdwm/communify-app/issues) • [**Changelog**](#changelog)
+[**Unduh APK (Rilis Terbaru)**](https://github.com/zyfdwm/communify-app/releases/latest) • [**Laporkan Masalah**](https://github.com/zyfdwm/communify-app/issues) • [**Catatan Rilis**](#catatan-rilis)
 
 ---
 
-### Overview
+### Ringkasan
 
-**Communify** is a lightweight, background-first transit assistant tailored for daily commuters across the Greater Jakarta (Jabodetabek) metropolitan area. Designed for hands-free navigation, Communify runs unobtrusively in the background to provide timely Indonesian voice prompts (Text-to-Speech) directly to your earphones or TWS, ensuring you never miss a transit interchange or your destination station.
-
----
-
-### Key Capabilities
-
-- **Automated Earphone Voice Alerts (TTS)**: Context-aware announcements for upcoming stations, transfer prep warnings, and arrival notifications without requiring you to check your screen.
-- **Dual-Gate Geofencing (150m / 500m)**: Smart departure radius gating to eliminate false alarms while dwelling at departure platforms, paired with proactive 500m arrival zones.
-- **Multi-Modal Routing Engine**: Shortest-path routing (Dijkstra) supporting multi-hop journeys with up-to-date platform switch instructions (Manggarai SO-7 layout, Tanah Abang new concourse).
-- **Dead Reckoning Estimation**: Inertial estimation support during underground tunnels and dense signal-blocked segments.
-- **Persistent Background Operation**: Runs as a prioritized Android Foreground Service with state persistence across app lifecycle events.
-- **Offline Network Database**: Full local station and stop coordinate database—no active mobile data required for core geofence monitoring.
-- **Route Simulator**: Built-in 1x–5x simulation engine with station jump controls for previewing routes before boarding.
-- **Commute Carbon Analytics**: Automated travel logs with estimated CO₂ emission savings.
+**Communify** adalah asisten transportasi publik berbasis latar belakang (*background-first*) yang dirancang khusus untuk komuter harian di kawasan metropolitan Jabodetabek. Dirancang untuk navigasi *hands-free*, Communify berjalan di latar belakang untuk memberikan instruksi suara otomatis (Text-to-Speech) berbahasa Indonesia langsung ke earphone atau TWS Anda, memastikan Anda tidak melewatkan stasiun transit maupun stasiun tujuan akhir saat mendengarkan musik atau tertidur di perjalanan.
 
 ---
 
-### Supported Transit Networks
+### Fitur Utama
 
-Communify provides complete routing and coordinate mapping for 4 major regional systems:
+- **Pengumuman Suara Otomatis ke Earphone (TTS)**: Pengingat cerdas untuk stasiun berikutnya, persiapan transit/pindah peron, dan notifikasi kedatangan tanpa perlu terus-menerus mengecek layar ponsel.
+- **Dual-Gate Geofencing (150m / 500m)**: Algoritma *departure radius gate* 150m untuk mencegah alarm berulang saat armada masih berhenti di peron awal, dipadukan dengan zona peringatan 500m sebelum stasiun tujuan.
+- **Routing Engine Antarmoda**: Pencarian rute tercepat (*Dijkstra*) multi-hop lengkap dengan panduan perpindahan peron terkini (Layout SO-7 Manggarai & JPO Concourse Baru Tanah Abang).
+- **Estimasi Dead Reckoning**: Estimasi pergerakan inersial cerdas saat armada melewati terowongan bawah tanah MRT atau area dengan sinyal GPS terbatas.
+- **Layanan Latar Belakang Persisten**: Berjalan sebagai *Android Foreground Service* berprioritas tinggi dengan persistensi data yang tetap aman meski aplikasi diminimalkan.
+- **Basis Data Jaringan Offline**: Database stasiun dan koordinat tersimpan lokal di perangkat—tidak memerlukan kuota data aktif untuk pemantauan geofence dasar.
+- **Simulator Rute Virtual**: Fitur simulasi bawaan (1x–5x) lengkap dengan kontrol *Lompat Stasiun* untuk menguji rute sebelum berangkat.
+- **Analisis Karbon Komuter**: Pencatatan riwayat perjalanan otomatis disertai estimasi penghematan emisi karbon (CO₂).
+
+---
+
+### Cakupan Moda Transportasi
+
+Communify menyediakan pemetaan koordinat dan integrasi rute penuh untuk 4 moda transportasi utama:
 
 ```
 [ Communify Transit Engine ]
 ├── KRL Commuter Line
-│   ├── Bogor Line (Jakarta Kota - Bogor / Nambo)
-│   ├── Cikarang Loop Line (Cikarang - Manggarai - Kampung Bandan)
-│   ├── Rangkasbitung Line (Tanah Abang - Rangkasbitung)
-│   ├── Tangerang & Tanjung Priok Lines
-│   └── Soekarno-Hatta Airport Rail Link
+│   ├── Lin Bogor (Jakarta Kota - Bogor / Nambo)
+│   ├── Lin Cikarang Loop (Cikarang - Manggarai - Kampung Bandan)
+│   ├── Lin Rangkasbitung (Tanah Abang - Rangkasbitung)
+│   ├── Lin Tangerang & Tanjung Priok
+│   └── Kereta Bandara Soekarno-Hatta (Basoetta)
 ├── Transjakarta BRT
-│   ├── Corridors 1 - 14 (Full BRT Trunk Network)
-│   └── Elevated Corridor 13 (Ciledug - Tendean)
+│   ├── Koridor 1 - 14 (Jaringan Utama BRT Penuh)
+│   └── Koridor Layang 13 (Ciledug - Tendean)
 ├── MRT Jakarta
-│   └── North-South Line (Lebak Bulus Grab - Bundaran HI Bank DKI)
+│   └── Lin Utara-Selatan (Lebak Bulus Grab - Bundaran HI Bank DKI)
 └── LRT Network
-    ├── LRT Jabodebek (Cibubur Line & Bekasi Line)
+    ├── LRT Jabodebek (Lin Cibubur & Lin Bekasi)
     └── LRT Jakarta (Pegangsaan Dua - Velodrome)
 ```
 
 ---
 
-### Installation Guide (Android Sideload)
+### Panduan Instalasi (Sideload Android)
 
-Because Communify is currently distributed directly via GitHub Releases:
+Karena saat ini Communify didistribusikan secara independen melalui GitHub Releases:
 
-1. **Download APK**: Download the latest release `.apk` file from the [Releases tab](https://github.com/zyfdwm/communify-app/releases/latest).
-2. **Enable Unknown Sources**:
-   - Open the downloaded file.
-   - When prompted by Android security, navigate to **Settings** and toggle **"Allow from this source"** for your browser or file manager.
-3. **Install & Launch**: Tap **Install**, then open Communify.
-4. **Grant Permissions**:
-   - **Location Permission**: Select **"Allow all the time"** (Background Location) so route tracking and earphone announcements remain active while your phone is locked or stored in your pocket.
-   - **Notifications**: Allow notification access to enable heads-up status alerts.
+1. **Unduh File APK**: Unduh file `.apk` versi terbaru dari [halaman Releases](https://github.com/zyfdwm/communify-app/releases/latest).
+2. **Aktifkan Izin Sumber Tidak Dikenal**:
+   - Buka file yang telah diunduh di perangkat Android.
+   - Saat muncul dialog keamanan, pilih **Pengaturan / Settings** dan aktifkan opsi **"Izinkan dari sumber ini / Allow from this source"** untuk browser atau file manager Anda.
+3. **Pasang & Buka Aplikasi**: Tekan tombol **Pasang / Install**, lalu buka Communify.
+4. **Berikan Izin Akses**:
+   - **Izin Lokasi**: Pilih opsi **"Izinkan sepanjang waktu / Allow all the time"** (Background Location) agar pelacakan rute dan pengumuman suara tetap aktif saat layar ponsel terkunci atau disimpan di dalam saku.
+   - **Notifikasi**: Berikan izin notifikasi untuk menampilkan status perjalanan di status bar.
 
 ---
 
-### Changelog
+### Catatan Rilis
 
 #### v1.0.0 (Public Beta)
-- Initial public beta release.
-- Complete network coverage for KRL Commuter Line, Transjakarta Corridors 1–14, MRT Jakarta, and LRT Jabodebek/Jakarta.
-- Indonesian TTS audio engine for background earphone guidance.
-- Dijkstra transit routing with platform and interchange guidance.
-- Dead reckoning tracking for tunnel segments.
-- Built-in route simulation mode and commute carbon footprint tracker.
+- Rilis perdana versi public beta.
+- Dukungan penuh untuk KRL Commuter Line, Transjakarta Koridor 1–14, MRT Jakarta, dan LRT Jabodebek/Jakarta.
+- Integrasi audio engine TTS Bahasa Indonesia untuk panduan suara di earphone.
+- Routing transit antarmoda dengan panduan peron transit Manggarai & Dukuh Atas.
+- Fitur dead reckoning untuk segmen terowongan bawah tanah.
+- Simulator perjalanan virtual dan pencatat reduksi jejak karbon.
 
 ---
 
-### Feedback & Contributing
+### Umpan Balik & Saran
 
-To report routing discrepancies, missing bus stops, or suggest new features:
-- File a report under [**GitHub Issues**](https://github.com/zyfdwm/communify-app/issues).
-- Check the [**Discussions**](https://github.com/zyfdwm/communify-app/discussions) tab for community feature requests and roadmap updates.
+Untuk melaporkan ketidaksesuaian rute, halte/stasiun yang belum terdaftar, atau memberikan saran fitur baru:
+- Buat laporan melalui [**GitHub Issues**](https://github.com/zyfdwm/communify-app/issues).
+- Kunjungi tab [**Discussions**](https://github.com/zyfdwm/communify-app/discussions) untuk diskusi fitur dan roadmap pengembangan.
 
 ---
 
 <p align="left">
-  <sub>Communify Transit Assistant • Jakarta Metropolitan Area</sub>
+  <sub>Communify Transit Assistant • Jabodetabek Metropolitan Area</sub>
 </p>
