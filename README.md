@@ -11,9 +11,7 @@
 [**Unduh APK (Rilis Terbaru)**](https://github.com/zyfdwm/communify-app/releases/latest) • [**Laporkan Masalah**](https://github.com/zyfdwm/communify-app/issues) • [**Catatan Rilis**](#catatan-rilis)
 
 ---
-
-### Ringkasan
-
+<img src="/assets/screenshots/Communify Banner.png" />
 **Communify** adalah asisten transportasi publik berbasis latar belakang (*background-first*) yang dirancang khusus untuk komuter harian di kawasan metropolitan Jabodetabek. Dirancang untuk navigasi *hands-free*, Communify berjalan di latar belakang untuk memberikan instruksi suara otomatis (Text-to-Speech) berbahasa Indonesia langsung ke earphone atau TWS Anda, memastikan Anda tidak melewatkan stasiun transit maupun stasiun tujuan akhir saat mendengarkan musik atau tertidur di perjalanan.
 
 ---
