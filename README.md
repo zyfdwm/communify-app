@@ -18,6 +18,14 @@
 
 ---
 
+### Antarmuka Aplikasi
+
+| KRL Commuter Line | Transjakarta BRT | MRT Jakarta | LRT Network |
+| :---: | :---: | :---: | :---: |
+| <img src="assets/screenshots/krl.png" width="200" alt="KRL Commuter Line" /> | <img src="assets/screenshots/transjakarta.png" width="200" alt="Transjakarta BRT" /> | <img src="assets/screenshots/mrt.png" width="200" alt="MRT Jakarta" /> | <img src="assets/screenshots/lrt.png" width="200" alt="LRT Network" /> |
+
+---
+
 ### Fitur Utama
 
 - **Pengumuman Suara Otomatis ke Earphone (TTS)**: Pengingat cerdas untuk stasiun berikutnya, persiapan transit/pindah peron, dan notifikasi kedatangan tanpa perlu terus-menerus mengecek layar ponsel.
@@ -55,18 +63,33 @@ Communify menyediakan pemetaan koordinat dan integrasi rute penuh untuk 4 moda t
 
 ---
 
-### Panduan Instalasi (Sideload Android)
+### Panduan Instalasi (Sideload Android) & Keamanan
 
-Karena saat ini Communify didistribusikan secara independen melalui GitHub Releases:
+Karena Communify didistribusikan secara independen melalui GitHub Releases (belum dipublikasikan di Google Play Store):
 
+#### 1. Cara Instalasi APK
 1. **Unduh File APK**: Unduh file `.apk` versi terbaru dari [halaman Releases](https://github.com/zyfdwm/communify-app/releases/latest).
 2. **Aktifkan Izin Sumber Tidak Dikenal**:
    - Buka file yang telah diunduh di perangkat Android.
-   - Saat muncul dialog keamanan, pilih **Pengaturan / Settings** dan aktifkan opsi **"Izinkan dari sumber ini / Allow from this source"** untuk browser atau file manager Anda.
+   - Jika muncul dialog keamanan, pilih **Pengaturan / Settings** $\rightarrow$ aktifkan **"Izinkan dari sumber ini / Allow from this source"** untuk browser atau file manager Anda.
 3. **Pasang & Buka Aplikasi**: Tekan tombol **Pasang / Install**, lalu buka Communify.
 4. **Berikan Izin Akses**:
    - **Izin Lokasi**: Pilih opsi **"Izinkan sepanjang waktu / Allow all the time"** (Background Location) agar pelacakan rute dan pengumuman suara tetap aktif saat layar ponsel terkunci atau disimpan di dalam saku.
    - **Notifikasi**: Berikan izin notifikasi untuk menampilkan status perjalanan di status bar.
+
+#### 2. Informasi Penting Terkait Google Play Protect
+Saat memasang file APK di luar Play Store, sistem Android/Google Play Protect mungkin akan memunculkan peringatan seperti *"Aplikasi diblokir oleh Play Protect"* atau *"Pengembang tidak dikenal"*.
+
+> **Mengapa peringatan ini muncul?**  
+> Google Play Protect secara otomatis memindai seluruh aplikasi yang dipasang manual (sideload). Karena Communify dirilis secara independen dan tanda tangan digital (*signature*) aplikasi belum terdaftar di database Google Play Store berbayar, sistem keamanan Google menganggapnya sebagai aplikasi baru dari pengembang pihak ketiga.
+
+> **Apakah Communify Aman?**  
+> **100% Aman.** Aplikasi Communify bebas dari malware, adware, maupun pelacak data pribadi. Aplikasi ini murni membutuhkan izin lokasi hanya untuk menghitung jarak GPS ke stasiun/halte dan izin suara untuk pengumuman TTS ke earphone Anda.
+
+**Cara Melanjutkan Instalasi jika Diblokir Play Protect:**
+1. Pada pop-up peringatan Play Protect, klik **"Rincian lebih lanjut" / "More details"** (biasanya berupa teks kecil berpanah ke bawah).
+2. Klik tombol **"Tetap instal" / "Install anyway"**.
+3. Aplikasi akan terpasang dengan normal dan siap digunakan.
 
 ---
 
