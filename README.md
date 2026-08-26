@@ -3,8 +3,8 @@
 
 <p align="left">
   <img src="https://img.shields.io/badge/Platform-Android-000000?style=flat-square&logo=android&logoColor=white" alt="Platform" />
-  <img src="https://img.shields.io/badge/Versi-v1.0.0-24292e?style=flat-square" alt="Versi" />
-  <img src="https://img.shields.io/badge/Status-Public%20Beta-0969da?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Versi-v1.0.2-24292e?style=flat-square" alt="Versi" />
+  <img src="https://img.shields.io/badge/Status-Release%20Beta-0969da?style=flat-square" alt="Status" />
   <img src="https://img.shields.io/badge/Cakupan-Jabodetabek-1f2328?style=flat-square" alt="Cakupan" />
 </p>
 
