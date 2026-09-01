@@ -1,10 +1,10 @@
-# Communify
+# Communify Transit Assistant
 **Asisten Transit Cerdas & Pengingat Stasiun/Halte Berbasis Lokasi untuk Jabodetabek**
 
 <p align="left">
   <img src="https://img.shields.io/badge/Platform-Android-000000?style=flat-square&logo=android&logoColor=white" alt="Platform" />
-  <img src="https://img.shields.io/badge/Versi-v1.0.2-24292e?style=flat-square" alt="Versi" />
-  <img src="https://img.shields.io/badge/Status-Release%20Beta-0969da?style=flat-square" alt="Status" />
+  <img src="https://img.shields.io/badge/Versi-v1.0.3-24292e?style=flat-square" alt="Versi" />
+  <img src="https://img.shields.io/badge/Status-Public%20Release-0969da?style=flat-square" alt="Status" />
   <img src="https://img.shields.io/badge/Cakupan-Jabodetabek-1f2328?style=flat-square" alt="Cakupan" />
 </p>
 
@@ -16,24 +16,28 @@
   <img src="assets/screenshots/communify-banner.png" width="100%" alt="Communify Banner" />
 </p>
 
+---
+
 ### Ringkasan
 
-**Communify** adalah asisten transportasi publik berbasis latar belakang (*background-first*) yang dirancang khusus untuk komuter harian di kawasan metropolitan Jabodetabek. Dirancang untuk navigasi *hands-free*, Communify berjalan di latar belakang untuk memberikan instruksi suara otomatis (Text-to-Speech) berbahasa Indonesia langsung ke earphone atau TWS Anda, memastikan Anda tidak melewatkan stasiun transit maupun stasiun tujuan akhir saat mendengarkan musik atau tertidur di perjalanan.
+Lahir dari keresahan gue sebagai pengguna KRL yang baru aja 2 minggu bekerja di Jakarta Pusat, kadang gue suka gatau sudah sampai stasiun mana, terlebih kalau pakai TWS, gue harus lepas pasang TWS buat denger _announcer_ yang kasih tau sudah sampai Stasiun mana. Bahkan, gue pernah ketiduran ketika naik arah ke Manggarai tapi untungnya dibangunin petugas.
+
+Akhirnya, gue kepikiran untuk buat assistant gue sendiri ketika naik KRL, dan yap _meet_ **Communify Transit Assistant**. 
+
+Apps ini gue bangun dengan bantuan AI dengan Vibe-coding. Awalnya masih pakai web-base app. Tapi karena penasaran, akhirnya gue berhasil bikin versi APK nya walaupun belum rilis ke Play Store.
+
+Sederhananya, Communify ini memanfaatkan GPS tracking dari ponsel masing-masing untuk ngelacak perjalanan kalian sudah sampai mana, dan nantinya Communify akan kasih notifikasi suara untuk kasih tau kalian sudah sampai stasiun mana, jadi sekalipun kalian dengerin musik dengan volume yang kencang, kalian akan tetap tau saudah sampai mana tanpa khawatir terlewat stasiun tujuan ataupun transit.
 
 ---
 
-### Solusi Masalah GPS & Sinyal di Transportasi Umum
+### Fitur Communify
 
-Seringkali aplikasi navigasi biasa gagal saat digunakan di transportasi umum Jabodetabek karena masalah hilangnya sinyal GPS di bawah tanah atau alarm yang berbunyi sebelum waktunya. Communify dirancang dengan **3 teknologi khusus** untuk mengatasi kendala tersebut:
+Communify sendiri gue bangun di atas idealis dan perfeksionis gue. Tapi, ga semata-mata menghilangkan esensial dan fungsi untuk para penggunanya, Communify sendiri memang gak _perfect_ tapi dia punya sedikit fitur yang cukup buat gue selaku pengguna KRL, seperti:
 
-* 🚇 **Dead Reckoning Engine (Anti Buta di Terowongan MRT & Blind Spot)**  
-  Saat armada masuk ke terowongan bawah tanah (seperti MRT Senayan–Bundaran HI) di mana sinyal satelit GPS terputus total, *Watchdog Timer* Communify otomatis mengaktifkan mode navigasi inersial. Aplikasi menginterpolasi pergerakan armada secara cerdas berdasarkan kecepatan terakhir dan estimasi waktu tempuh antar stasiun. Hasilnya: **pengumuman suara TTS dan getaran notifikasi tetap berbunyi tepat waktu sebelum tiba di stasiun tujuan!**
-
-* 🛡️ **Departure Radius Gate 150m (Bebas Alarm Palsu di Peron)**  
-  Di stasiun yang padat, akurasi sinyal GPS sering "melompat-lompat" (*jitter*) saat kereta atau bus Transjakarta masih berhenti di peron awal. Communify mengunci sistem pelacakan dengan gerbang virtual 150 meter. Alarm stasiun berikutnya hanya akan aktif setelah armada benar-benar meluncur keluar dari stasiun keberangkatan.
-
-* 🔋 **100% Offline Database & Android Foreground Service**  
-  Tidak ada sinyal operator di lintasan rel atau kuota internet habis? Bukan masalah. Seluruh koordinat stasiun dan halte tersimpan secara lokal di perangkat (*offline-first*). Dipadukan dengan *Android Foreground Service*, pelacakan GPS dijamin tidak akan dimatikan paksa oleh sistem penghemat baterai Android saat HP dimasukkan ke kantong celana.
+* Timline perjalanan (dalam kilometer)
+* Notifikasi suara tiap sampai stasiun major/minor
+* Estimasi perjalanan
+* Tersedia untuk rute KRL/MRT/LRT dan Transjakarta
 
 ---
 
@@ -45,49 +49,12 @@ Seringkali aplikasi navigasi biasa gagal saat digunakan di transportasi umum Jab
 
 ---
 
-### Fitur Utama
-
-- **Pengumuman Suara Otomatis ke Earphone (TTS)**: Pengingat cerdas untuk stasiun berikutnya, persiapan transit/pindah peron, dan notifikasi kedatangan tanpa perlu terus-menerus mengecek layar ponsel.
-- **Dual-Gate Geofencing (150m / 500m)**: Algoritma *departure radius gate* 150m untuk mencegah alarm berulang saat armada masih berhenti di peron awal, dipadukan dengan zona peringatan 500m sebelum stasiun tujuan.
-- **Routing Engine Antarmoda**: Pencarian rute tercepat (*Dijkstra*) multi-hop lengkap dengan panduan perpindahan peron terkini (Layout SO-7 Manggarai & JPO Concourse Baru Tanah Abang).
-- **Estimasi Dead Reckoning**: Estimasi pergerakan inersial cerdas saat armada melewati terowongan bawah tanah MRT atau area dengan sinyal GPS terbatas.
-- **Layanan Latar Belakang Persisten**: Berjalan sebagai *Android Foreground Service* berprioritas tinggi dengan persistensi data yang tetap aman meski aplikasi diminimalkan.
-- **Basis Data Jaringan Offline**: Database stasiun dan koordinat tersimpan lokal di perangkat—tidak memerlukan kuota data aktif untuk pemantauan geofence dasar.
-- **Simulator Rute Virtual**: Fitur simulasi bawaan (1x–5x) lengkap dengan kontrol *Lompat Stasiun* untuk menguji rute sebelum berangkat.
-- **Analisis Karbon Komuter**: Pencatatan riwayat perjalanan otomatis disertai estimasi penghematan emisi karbon (CO₂).
-
----
-
-### Cakupan Moda Transportasi
-
-Communify menyediakan pemetaan koordinat dan integrasi rute penuh untuk 4 moda transportasi utama:
-
-```
-[ Communify Transit Engine ]
-├── KRL Commuter Line
-│   ├── Lin Bogor (Jakarta Kota - Bogor / Nambo)
-│   ├── Lin Cikarang Loop (Cikarang - Manggarai - Kampung Bandan)
-│   ├── Lin Rangkasbitung (Tanah Abang - Rangkasbitung)
-│   ├── Lin Tangerang & Tanjung Priok
-│   └── Kereta Bandara Soekarno-Hatta (Basoetta)
-├── Transjakarta BRT
-│   ├── Koridor 1 - 14 (Jaringan Utama BRT Penuh)
-│   └── Koridor Layang 13 (Ciledug - Tendean)
-├── MRT Jakarta
-│   └── Lin Utara-Selatan (Lebak Bulus Grab - Bundaran HI Bank DKI)
-└── LRT Network
-    ├── LRT Jabodebek (Lin Cibubur & Lin Bekasi)
-    └── LRT Jakarta (Pegangsaan Dua - Velodrome)
-```
-
----
-
 ### Panduan Instalasi (Sideload Android) & Keamanan
 
 Karena Communify didistribusikan secara independen melalui GitHub Releases (belum dipublikasikan di Google Play Store):
 
 #### 1. Cara Instalasi APK
-1. **Unduh File APK**: Unduh file `.apk` versi terbaru dari [halaman Releases](https://github.com/zyfdwm/communify-app/releases/latest).
+1. **Unduh File APK**: Unduh file `.apk` versi terbaru dari [halaman Releases](https://github.com/zyfdwm/communify-app/releases/latest). (sementara gue buat dalam format .zip biar ukurannya ga terlalu besar, dan lebih safe)
 2. **Aktifkan Izin Sumber Tidak Dikenal**:
    - Buka file yang telah diunduh di perangkat Android.
    - Jika muncul dialog keamanan, pilih **Pengaturan / Settings** $\rightarrow$ aktifkan **"Izinkan dari sumber ini / Allow from this source"** untuk browser atau file manager Anda.
@@ -114,14 +81,13 @@ Saat memasang file APK di luar Play Store, sistem Android/Google Play Protect mu
 
 ### Catatan Rilis
 
-#### v1.0.0 (Public Beta)
-- Rilis perdana versi public beta.
-- Dukungan penuh untuk KRL Commuter Line, Transjakarta Koridor 1–14, MRT Jakarta, dan LRT Jabodebek/Jakarta.
-- Integrasi audio engine TTS Bahasa Indonesia untuk panduan suara di earphone.
-- Routing transit antarmoda dengan panduan peron transit Manggarai & Dukuh Atas.
-- Fitur dead reckoning untuk segmen terowongan bawah tanah.
-- Simulator perjalanan virtual dan pencatat reduksi jejak karbon.
-
+#### v1.0.3 (Public Release)
+- Perbaikan fitur GPS tracking & background tracking
+- Enhancement notifikasi suara (lebih jelas dan keras)
+- Perbaikan rute dan peron untuk transit
+- Enhancement UI
+- Enhancement dead reckoning untuk segmen terowongan bawah tanah
+- Minor enhancement
 ---
 
 ### Umpan Balik & Saran
