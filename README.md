@@ -45,7 +45,7 @@ Communify sendiri gue bangun di atas idealis dan perfeksionis gue. Tapi, ga sema
 
 | Front | Timeline | History | Settings |
 | :---: | :---: | :---: | :---: |
-| <img src="assets/screenshots/krl.png" width="200" alt="KRL Commuter Line" /> | <img src="assets/screenshots/transjakarta.png" width="200" alt="Transjakarta BRT" /> | <img src="assets/screenshots/mrt.png" width="200" alt="MRT Jakarta" /> | <img src="assets/screenshots/lrt.png" width="200" alt="LRT Network" /> |
+| <img src="assets/screenshots/krl.png" width="200" alt="KRL Commuter Line" /> | <img src="assets/screenshots/mrt.png" width="200" alt="MRT Jakarta" /> | <img src="assets/screenshots/lrt.png" width="200" alt="LRT Network" /> | <img src="assets/screenshots/transjakarta.png" width="200" alt="Transjakarta BRT" />  | 
 
 ---
 
